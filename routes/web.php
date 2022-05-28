@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ColecoesController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/colecoes/aula01', [ColecoesController::class, 'aula01']);
+Route::get('/colecoes/aula02', [ColecoesController::class, 'aula02']);
+Route::get('/colecoes/aula03', [ColecoesController::class, 'aula03']);
+Route::get('/colecoes/aula04', [ColecoesController::class, 'aula04']);
+Route::get('/colecoes/aula05', [ColecoesController::class, 'aula05']);
+Route::get('/colecoes/aula06', [ColecoesController::class, 'aula06']);
+
+
