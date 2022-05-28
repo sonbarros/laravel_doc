@@ -89,6 +89,9 @@ class ColecoesController extends Controller
         
     }
 
+    /**
+     * chunkWhile() // laravel 8
+     */
     public function aula06() {
 
         $Collections = collect(str_split('AABBCCCD'));
@@ -105,4 +108,99 @@ class ColecoesController extends Controller
         // Observe que conforme o criterio ele irá agrupar os caracteres iguais
         
     }
+
+    /**
+     * collapse()
+     * O método de colapso recolhe uma coleção 
+     * de matrizes em uma única coleção
+     */
+    public function aula07() {
+
+        $collection = collect([
+            [1, 2 ,3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ]);
+
+        $collapsed = $collection->collapse();
+        
+        dd(
+            $collapsed->all()
+        );
+    }
+
+    /**
+     * combine()
+     * O comine metodo combina valores de um arrai com outro array
+     * formando um array outro array com chaves e valores
+     */
+    public function aula08() {
+        $collection = collect(['name', 'age']);
+        $combined = $collection->combine(['Anderson', 33]);
+        
+        dd(
+            $combined->all()
+        ); // ['name' => 'Anderson', 'age' => 33]
+        
+    }
+
+    /**
+     * concat()
+     * O método concat anexa os valores de array ou coleção fornecidos no final da coleção:
+     */
+    public function aula09() {
+
+        $collection = collect(['Luana']);
+        $concatenated = $collection->concat(['Marcioneide'])->concat(['name' => 'Evinha']);
+        dd(
+            $concatenated->all()
+        );
+    }
+
+    /**
+     * contains()
+     * Retorn true or false
+     */
+    public function aula10() {
+
+        $collection = collect(['name' => 'desk', 'price' => 100]);
+        
+        dd(
+            $collection->contains('desk') // true
+        );
+
+        // $collection->contains('New York'); // false
+
+        /**
+         * Você tambem pode passar um par de chaves e valores
+         */
+
+        $collection = collect([
+            ['product' => 'Desk', 'price' => 200],
+            ['product' => 'Chair', 'price' => 100],
+        ]);
+
+        $collection->contains('product', 'Bookcase'); // false
+
+        // Finally, you may also pass a callback to the contains method to perform your own truth test
+        $collection = collect([1, 2, 3, 4, 5]);
+ 
+        $collection->contains(function ($value, $key) {
+            return $value > 5;
+        }); // false
+        
+    }
+
+    /**
+     * count()
+     */
+    public function aula11() {
+
+        // continuar 
+    }
+
+
+
+
 }
+
